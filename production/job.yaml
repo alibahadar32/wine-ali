@@ -4,8 +4,8 @@ command: python model.py --trainingdata ${{ inputs.training_data }}
 inputs:
   training_data:
     type: uri_file
-    path: azureml:mushrooms:1
+    path: azureml:winemag-data:1
 environment: azureml://registries/azureml/environments/sklearn-1.1/versions/14
-compute: mushroom
-experiment_name: mushroom_identification
-description: mushroom classification
+compute: wine-origin  
+experiment_name: wine-origin
+description: wine origin classification

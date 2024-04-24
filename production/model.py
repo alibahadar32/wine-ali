@@ -13,15 +13,20 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score, classification_report
 
+# Get the arugments we need to avoid fixing the dataset path in code
+parser = argparse.ArgumentParser()
+parser.add_argument("--trainingdata", type=str, required=True, help='Dataset for training')
+args = parser.parse_args()
+
 # %% [markdown]
 # ## load and read data 
 
 # %%
 # Load the dataset with error handling to skip problematic rows
 try:
-    data = pd.read_csv("args.trainingdata")
+    data = pd.read_csv(args.trainingdata)
 except pd.errors.ParserError:
-    data = pd.read_csv("args.trainingdata", error_bad_lines=False)
+    data = pd.read_csv(args.trainingdata, error_bad_lines=False)
 
 # %% [markdown]
 # ## Drop rows with missing values in the 'description' and 'points' columns
